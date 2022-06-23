@@ -2,7 +2,7 @@ import random
 
 
 def random_word():
-    file = open('words.txt')
+    file = open('test-word.txt')
     read_word = file.read()
     random_list_word = read_word.split()
     computer_word = random.choice(random_list_word)
@@ -35,8 +35,6 @@ def get_guess():
 
 
 def compare_guess_to_word(word):
-    # mystery_word = random_word()
-    # make_list = word_list(mystery_word)
     display = [(user_guess.replace(user_guess, '_')) for user_guess in word]
     print(f"this is display: {' '.join(display)}")
     remaining_guesses = 8
@@ -54,6 +52,12 @@ def compare_guess_to_word(word):
                 if set(sorted(display)) == set(sorted(correct_guesses)):
                     print('YOU WIN!')
                     break
+                    # y_o_n = input('Would you like to play again? Y or N: ')
+                    # y_o_n_lower = y_o_n.lower()
+                    # if y_o_n_lower == "y":
+                    #     return compare_guess_to_word(word)
+                    # else:
+                    #     break
             else:
                 print('You already guessed that try again.')
         else:
@@ -63,14 +67,12 @@ def compare_guess_to_word(word):
             print(f'you have {remaining_guesses} guesses left!')
         all_guesses = set(correct_guesses + incorrect_guesses)
         print(f"Letter's already guessed: {' '.join(all_guesses)}")
-    if remaining_guesses == 0:
+    else:
         print(f'YOU LOST! The correct word was {word}')
-        y_o_n = input('Would you like to play agian? Y or N')
-        if y_o_n == "y" or y_o_n == "Y":
-            play_game()
-        else:
-            break
-        
+        # y_o_n = input('Would you like to play agian? Y or N')
+        # y_o_n_lower = y_o_n.lower()
+        # if y_o_n_lower == "n":
+        #     break
 
 
 def play_game():
